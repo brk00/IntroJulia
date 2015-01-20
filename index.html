@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Introdução Julia</title>
+
+		<meta name="description" content="A fresh approach to techinical computing">
+		<meta name="author" content="Paulo R. O. Castro">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="images/julia-logo.png" data-background-size="500px"></section>
+
+				<section>
+					<section>
+						<h1>Expressividade vs. Performance </h1>
+					</section>
+					<section data-background="images/c-logo.png" data-background-size="500px"></section>
+					<section data-background="images/java-logo.jpg" data-background-size="500px"></section>
+					<section data-background="images/python-logo.png" data-background-size="500px"></section>
+					<section data-background="images/lisp-logo.png" data-background-size="300px"></section>
+					<section data-background="images/julia-logo.png" data-background-size="500px"></section>
+				</section>
+
+				<section>
+				<section>
+					<h3>Expressividade</h3>
+					</br>
+					<pre><code data-trim>
+# Soma os números pares entre 1 e N
+function foo(N)
+   x = 0
+
+   for i in 1:N
+      if iseven(i)
+         x += i
+      end
+   end
+
+   return x
+end
+			        </code></pre>
+				</section>
+
+				<section>
+					<pre><code data-trim>
+foo(N) = sum([iseven(i) ? i : 0 for i in 1:N])
+					</code></pre>
+				</section>
+
+				</section>
+
+				<section>
+					<h3>Performance</h3>
+					</br>
+					<img src="images/comp.png">
+				</section>
+
+				<section>
+					<h1>O que mais?</h1>
+				</section>
+
+				<section>
+					<section>
+						<h3>Programação Paralela</h3>
+						</br>
+						<pre><code data-trim># Soma 1 para cada CARA que for sorteada
+head = @parallel (+) for i = 1:200000
+   int(randbool())
+end
+						</code></pre>
+					</section>
+					<section>
+						<p style="font-size:85px"><a href="https://github.com/JuliaGPU/CUDA.jl">CUDA.jl</a> e <a href="https://github.com/JuliaGPU/OpenCL.jl">OpenCL.jl</a></p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Chamando C ou FORTRAN</h2>
+						<br/>
+						<pre><code data-trim>ccall( (:sqrt, "libm"), Float64, (Float64,), 100.0)
+						</code></pre>
+						<br/>
+						<br/>
+						<span class="fragment fade-in"> Uma linha!</span>
+					</section>
+
+					<section>
+						<p style="font-size:75px"><a href="https://github.com/stevengj/PyCall.jl">PyCall.jl</a></p>
+						<br/>
+						<pre><code data-trim>using PyCall
+
+@pyimport matplotlib.pyplot as plt
+plt.plot(xs, ys)
+						</code></pre>
+					</section>
+
+					<section>
+						<p style="font-size:85px"><a href="https://github.com/one-more-minute/Mathematica.jl">Mathematica.jl</a>, <a href="https://github.com/JuliaLang/MATLAB.jl">MATLAB.jl</a> e <a href="https://github.com/JuliaStats/RCall.jl">RCall.jl</a></p>
+					</section>
+
+					<section>
+						<p style="font-size:85px"><a href="https://github.com/timholy/Cpp.jl">Cpp.jl</a> e <a href="https://github.com/aviks/JavaCall.jl">JavaCall.jl</a></p>
+					</section>
+				</section>
+
+				<section data-background="images/ijulia-logo.png" data-background-size="500px"></section>
+
+				<section>
+					<h1><a target="_blank" href="http://nbviewer.ipython.org/github/brk00/IntroJulia/blob/master/tipos.ipynb">Tipos</a></h1>
+				</section>
+
+				<section>
+					<h1>DataFrames</h1>
+				</section>
+
+				<section>
+					<section data-background="images/gadfly-logo.svg" data-background-size="500px"></section>
+
+					<section>
+						<div align = "center">
+							<object data="images/iris.js.svg" type="image/svg+xml"></object>
+						</div>
+					</section>
+
+					<section>
+						<div align = "center">
+							<object data="images/singer.js.svg" type="image/svg+xml"></object>
+						</div>
+					</section>
+
+					<section>
+						<div align = "center">
+							<object data="images/volcano.js.svg" type="image/svg+xml"></object>
+						</div>
+					</section>
+
+					<section data-background="images/gadfly-demo.png"></section>
+
+					<section data-background="images/interact.png" data-background-size="500px"></section>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
