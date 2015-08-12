@@ -95,9 +95,12 @@ foo(N) = sum([iseven(i) ? i : 0 for i in 1:N])
 					<section>
 						<h3>Programação Paralela</h3>
 						</br>
-						<pre><code data-trim># Soma 1 para cada CARA que for sorteada
-head = @parallel (+) for i = 1:200000
-   int(randbool())
+						<pre><code data-trim># Experimento: alguma coroa em 3 jogadas de moeda?
+# Roda 100 milhões de experimentos em paralelo
+# e conta o número de sucessos
+
+sucesses = @parallel (+) for i in 1:100000000
+    Int(any(bitrand(3)))
 end
 						</code></pre>
 					</section>
