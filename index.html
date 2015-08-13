@@ -82,13 +82,48 @@ foo(N) = sum([iseven(i) ? i : 0 for i in 1:N])
 				</section>
 
 				<section>
-					<h3>Performance</h3>
-					</br>
-					<img src="images/comp.png">
+					<section>
+						<h1>Performance</h1>
+					</section>
+
+					<section data-background="images/comp.png" data-background-size="700px"></section>
+					<section data-background="images/a.png" data-background-size="700px"></section>
+				</section>
+
+				<section>
+					<h1>Demonstração</h1>
 				</section>
 
 				<section>
 					<h1>O que mais?</h1>
+				</section>
+
+				<section>
+					<section>
+						<h1>Metaprogramação</h1>
+					</section>
+
+					<section>
+						<h2>Pipeline</h2>
+						<br/>
+						Como Julia roda nossos programas?
+					</section>
+
+					<section>
+						<h2>Expressões e Símbolos</h2>
+					</section>
+
+					<section>
+						<h2>Macros</h2>
+						<br/>
+						Geração de código dentro da própria linguagem (manipulando expressões e símbolos)
+					</section>
+
+					<section>
+						<h2>Muito mais</h2>
+						<br/>
+						Ver a documentação e palestras sobre o assunto
+					</section>
 				</section>
 
 				<section>
@@ -99,7 +134,7 @@ foo(N) = sum([iseven(i) ? i : 0 for i in 1:N])
 # Roda 100 milhões de experimentos em paralelo
 # e conta o número de sucessos
 
-sucesses = @parallel (+) for i in 1:100000000
+sucesses = @parallel (+) for i in 1:10^8
     Int(any(bitrand(3)))
 end
 						</code></pre>
